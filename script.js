@@ -105,14 +105,14 @@ function guess(btn){
 
 // Sound Synthesis Functions
 const freqMap = {
-  1: 261.6,
-  2: 329.6,
-  3: 392,
-  4: 466.2,
-  5: 523.2,
-  6: 587.3,
-  7: 659.2,
-  8: 698.4
+  1: 261.63, // Do
+  2: 293.66, // Re
+  3: 329.63, // Mi
+  4: 349.23, // Fa
+  5: 392.00, // So
+  6: 440.00, // La
+  7: 493.88, // Ti
+  8: 523.25 // Do
 }
 
 function playTone(btn,len){ 
