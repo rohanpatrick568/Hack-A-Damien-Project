@@ -12,6 +12,14 @@ button{
   padding: 10px;
   border-radius: 10px;
 }
+#gameButtonArea {
+  display: grid;
+  grid-template-columns: repeat(4, 200px);
+  grid-template-rows: repeat(2, 200px);
+  gap: 10px;
+  justify-content: center;
+  padding: 20px;
+}
 #gameButtonArea > button {
   /* declarations defined here will affect only our four Game Buttons */
   height: 200px;
@@ -44,4 +52,28 @@ background: lightyellow;
 }
 #button4:active, #button4.lit{
   background:yellow;
+}
+#button5{
+  background: lightpink;
+}
+#button6{
+  background: lightsalmon;
+}
+#button7{
+  background: lightseagreen;
+}
+#button8{
+  background: plum;
+}
+#button5:active, #button5.lit {
+  background: deeppink;
+}
+#button6:active, #button6.lit {
+  background: coral;
+}
+#button7:active, #button7.lit {
+  background: seagreen;
+}
+#button8:active, #button8.lit {
+  background: purple;
 }
