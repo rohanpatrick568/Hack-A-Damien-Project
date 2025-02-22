@@ -25,6 +25,10 @@ button{
   height: 200px;
   width: 200px;
   margin: 2px;
+  font-family: helvetica, arial, sans-serif;
+  color: white;
+  font-weight: 800;
+  font-size: xx-large;
 }
 .hidden {
   display: none;
