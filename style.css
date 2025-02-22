@@ -2,13 +2,19 @@ body {
     font-family: helvetica, arial, sans-serif;
     margin: 2em;
     background-color: lightblue;
-    color: white;
+    color: white; 
   }
   
 h1{
     font-family: verdana, arial, sans-serif;
-    
+    display: flex;
+    justify-content: center;
 }
+p{
+  display: flex;
+  justify-content: center;
+}
+
 button{
   padding: 10px;
   border-radius: 10px;
