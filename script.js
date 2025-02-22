@@ -1,5 +1,5 @@
 //Add your global variables here
-let pattern = [2, 2, 4, 3, 2, 1, 2, 4];
+let pattern = []; // stores the pattern of the game
 let progress = 0; 
 let gamePlaying = false;
 // store the start and stop buttons
@@ -12,9 +12,16 @@ const cluePauseTime = 333; //how long to pause in between clues
 const nextClueWaitTime = 1000; //how long to wait before starting playback of the clue sequence
 let guessCounter = 0;
 
+function getRandomButton(){ 
+    // generates a random number between 1 and 8 (8 Buttons)
+    return Math.floor(Math.random() * 8) + 1; // Do to Do 
+}
+
 // Add your functions here
 function startGame(){
   //function body
+  pattern = []; // clear pattern
+  pattern.push(getRandomButton()); // add a random button to the pattern
   progress = 0;
   gamePlaying = true;
   // swap the Start and Stop buttons
@@ -24,7 +31,6 @@ function startGame(){
 }
 function stopGame(){
   gamePlaying = false;
-
   startBtn.classList.remove("hidden");
   stopBtn.classList.add("hidden");
 }
@@ -84,15 +90,12 @@ function guess(btn){
   if(pattern[guessCounter] == btn){
     //Guess was correct!
     if(guessCounter == progress){
-      if(progress == pattern.length - 1){
-        //GAME OVER: WIN!
-        winGame();
-      }else{
-        //Pattern correct. Add next segment
+        // completed the currrent sequence correctly; add another level
+        pattern.push(getRandomButton());
         progress++;
         playClueSequence();
-      }
-    }else{
+      
+    } else{
       //so far so good... check the next guess
       guessCounter++;
     }
