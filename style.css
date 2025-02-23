@@ -15,6 +15,7 @@ h1{
 p{
   display: flex;
   justify-content: center;
+  font-weight: bold;
 }
 
 #scoreDisplay {
@@ -49,7 +50,8 @@ p{
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  margin-left: 595px;
+  margin-left: 600px;
+  left: 500px;
 }
 
 #startBtn {
@@ -61,6 +63,7 @@ p{
   border-radius: 5px;
   cursor: pointer;
   margin-left: 600px;
+ 
 }
 
 #backToHome {
@@ -117,9 +120,18 @@ button{
   text-align: center; /* Centers text inside the div */
 }
 
+#hardModeToggle{
+  font-size: 10px;
+  padding: 10px;
+  border: none;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
 #button1{
 background: lightgreen;
-
 }
 #button2{
 background: rgb(112, 199, 228);
@@ -165,4 +177,28 @@ background: rgb(255, 206, 150);
 }
 #button8:active, #button8.lit {
   background: purple;
+}
+.hardModeToggle #button1.lit {
+  background: lightgreen; /* Replace with the default background color of button1 */
+}
+.hardModeToggle #button2.lit {
+  background: rgb(112, 199, 228); /* Replace with the default background color of button2 */
+}
+.hardModeToggle #button3.lit {
+  background: pink; /* Replace with the default background color of button3 */
+}
+.hardModeToggle #button4.lit {
+  background: rgb(255, 206, 150); /* Replace with the default background color of button4 */
+}
+.hardModeToggle #button5.lit {
+  background: lightpink; /* Replace with the default background color of button5 */
+}
+.hardModeToggle #button6.lit {
+  background: lightsalmon; /* Replace with the default background color of button6 */
+}
+.hardModeToggle #button7.lit {
+  background: lightseagreen; /* Replace with the default background color of button7 */
+}
+.hardModeToggle #button8.lit {
+  background: plum; /* Replace with the default background color of button8 */
 }

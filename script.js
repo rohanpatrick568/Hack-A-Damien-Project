@@ -7,12 +7,15 @@ const startBtn = document.getElementById("startBtn");
 const stopBtn = document.getElementById("stopBtn");
 let tonePlaying = false;
 const volume = 0.5;
-const clueHoldTime = 1000;
+let clueHoldTime = 1000;
 const cluePauseTime = 333; //how long to pause in between clues
 const nextClueWaitTime = 1000; //how long to wait before starting playback of the clue sequence
 let guessCounter = 0;
 let score = 0;
 let highScore = 0;
+let patternSpeed = 1000; // Normal speed (in milliseconds)
+let patternLength = 3; // Normal pattern length
+
 
 function getRandomButton(){ 
     // generates a random number between 1 and 8 (8 Buttons)
@@ -202,3 +205,42 @@ function resetScore() {
   document.getElementById("scoreDisplay").innerText = "Score: " + score;
 }
 
+let hardModeEnabled = false; // Flag to track Hard Mode state
+
+function toggleHardMode() {
+    hardModeEnabled = !hardModeEnabled; // Toggle the hard mode state
+
+    // Update button text based on current state
+    if (hardModeEnabled) {
+        document.getElementById("hardModeToggle").innerText = "Disable Hard Mode";
+        // Apply hard mode settings (e.g., faster speed, more difficult pattern)
+        enableHardMode();
+    } else {
+        document.getElementById("hardModeToggle").innerText = "Enable Hard Mode";
+        // Revert to normal mode settings
+        disableHardMode();
+    }
+}
+
+function enableHardMode() {
+    // Apply changes for hard mode (example: reduce time interval, increase speed)
+    console.log("Hard Mode Enabled");
+    document.querySelectorAll('button').forEach(button => {
+      document.getElementById('gameButtonArea').classList.add('hardModeToggle');});
+    clueHoldTime = 300; // Speed up the pattern (in milliseconds)
+    patternLength = 5;  // Make the pattern longer (more tones)
+    // For example: faster pattern generation
+    // You can modify the game logic here to make the game harder
+    document.getElementById("stopBtn").innerText = "End Hard Mode";
+}
+
+function disableHardMode() {
+    // Revert any changes made for hard mode
+    console.log("Hard Mode Disabled");
+    clueHoldTime = 1000; // Reset speed
+    patternLength = 2;   // Reset pattern length
+    // Revert back to normal mode game settings
+    document.getElementById("stopBtn").innerText = "End Easy Mode";
+    document.querySelectorAll('button').forEach(button => {
+      document.getElementById('gameButtonArea').classList.remove('hardModeToggle');});
+}
