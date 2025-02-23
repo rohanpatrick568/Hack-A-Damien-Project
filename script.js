@@ -128,8 +128,8 @@ function startCountdown(){
 }
 
 function loseGame(){
-  stopGame();
   alert("Whomp Whomp! You Lost😂🫵🏾! Click the 'Retry' button to try again.");
+  stopGame();
 }
 
 function winGame(){
