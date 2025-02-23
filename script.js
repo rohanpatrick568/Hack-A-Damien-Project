@@ -15,7 +15,8 @@ let score = 0;
 let highScore = 0;
 let patternSpeed = 1000; // Normal speed (in milliseconds)
 let patternLength = 3; // Normal pattern length
-
+let isPatternPlaying = false; // existing flag
+let allowGuessing = false;    // new flag controlling button activation
 
 function getRandomButton(){ 
     // generates a random number between 1 and 8 (8 Buttons)
@@ -66,7 +67,11 @@ function playSingleClue(btn){
 }
 function playClueSequence(){
   guessCounter = 0;
-  context.resume()
+  isPatternPlaying = true; // disable note button clicks
+  allowGuessing = false;   // disable guessing until delay passes
+  // Disable pointer events to prevent the darkening effect
+  document.getElementById("gameButtonArea").style.pointerEvents = "none";
+  context.resume();
   let delay = nextClueWaitTime; //set delay to initial wait time
   for(let i=0;i<=progress;i++){ // for each clue that is revealed so far
     console.log("play single clue: " + pattern[i] + " in " + delay + "ms")
@@ -74,6 +79,33 @@ function playClueSequence(){
     delay += clueHoldTime 
     delay += cluePauseTime;
   }
+  // After the sequence, start a 5-second countdown.
+  setTimeout(startCountdown, delay);
+}
+
+// Updated countdown function with dynamic delay computed as (0.01 * score)
+function startCountdown(){
+  let dynamicDelay = 0.01 * score; // no fixed addition
+  let count = dynamicDelay;
+  const countdownEl = document.getElementById("countdown");
+  countdownEl.style.display = "block";
+  countdownEl.innerText = "Wait(" + count + ")..";
+  count -= 1;
+  const countdownInterval = setInterval(() => {
+    if(count > 0) {
+      countdownEl.innerText = "Wait(" + count + ")..";
+      count -= 1;
+    } else {
+      countdownEl.innerText = "GO!";
+      clearInterval(countdownInterval);
+      setTimeout(() => {
+          countdownEl.style.display = "none";
+          isPatternPlaying = false;
+          allowGuessing = true;
+          document.getElementById("gameButtonArea").style.pointerEvents = "auto";
+      }, 1000);
+    }
+  }, 1000);
 }
 
 function loseGame(){
@@ -87,6 +119,9 @@ function winGame(){
 }
 
 function guess(btn){
+  // ignore guesses if input is not yet allowed
+  if(!allowGuessing) return;
+  
   console.log("user guessed: " + btn);
   
   if(!gamePlaying){
@@ -137,6 +172,8 @@ function playTone(btn,len){
 }
 
 function startTone(btn){
+  // prevent note activation if guessing isn't allowed
+  if(!allowGuessing) return;
   if(!tonePlaying){
     context.resume()
     o.frequency.value = freqMap[btn]

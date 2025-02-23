@@ -202,3 +202,14 @@ background: rgb(255, 206, 150);
 .hardModeToggle #button8.lit {
   background: plum; /* Replace with the default background color of button8 */
 }
+
+#countdown {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 48px;
+  color: white;
+  display: none;
+  z-index: 999;
+}
