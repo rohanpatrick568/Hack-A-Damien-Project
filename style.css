@@ -19,7 +19,19 @@ p{
 
 #scoreDisplay {
   position: absolute;
-  bottom: 20px; /* Distance from the bottom */
+  bottom: 40px; /* Distance from the bottom */
+  left: 50%;
+  transform: translateX(-50%); /* Center horizontally */
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+  color: white;
+}
+
+#highScoreDisplay {
+  position: absolute;
+  bottom: 10px; /* Distance from the bottom */
   left: 50%;
   transform: translateX(-50%); /* Center horizontally */
   font-size: 20px;
@@ -62,6 +74,7 @@ p{
 button{
   padding: 10px;
   border-radius: 10px;
+  border: none;
 }
 #gameButtonArea {
   display: grid;
@@ -107,7 +120,7 @@ background: lightgreen;
 
 }
 #button2{
-background: lightblue;
+background: rgb(112, 199, 228);
 }
 #button3{
 background: pink;

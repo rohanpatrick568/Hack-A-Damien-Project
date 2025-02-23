@@ -12,6 +12,7 @@ const cluePauseTime = 333; //how long to pause in between clues
 const nextClueWaitTime = 1000; //how long to wait before starting playback of the clue sequence
 let guessCounter = 0;
 let score = 0;
+let highScore = 0;
 
 function getRandomButton(){ 
     // generates a random number between 1 and 8 (8 Buttons)
@@ -34,6 +35,7 @@ function stopGame(){
   gamePlaying = false;
   startBtn.classList.remove("hidden");
   stopBtn.classList.add("hidden");
+  resetScore();
 }
 
 function lightButton(btn){
@@ -73,7 +75,7 @@ function playClueSequence(){
 
 function loseGame(){
   stopGame();
-  alert("Whomp Whomp! You Lost😂🫵🏾!");
+  alert("Whomp Whomp! You Lost😂🫵🏾! Click the 'Retry' button to try again.");
 }
 
 function winGame(){
@@ -182,6 +184,11 @@ o.start(0)
 function updateScore(points) {
   score += points; // Increase the score
   document.getElementById("scoreDisplay").innerText = "Score: " + score;
+
+  if (score > highScore) {
+    highScore = score;
+    document.getElementById("highScoreDisplay").innerText = "High Score: " + highScore;
+}
 }
 
 // Example: Call this function when the player scores
