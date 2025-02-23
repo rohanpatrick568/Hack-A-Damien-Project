@@ -17,6 +17,7 @@ let patternSpeed = 1000; // Normal speed (in milliseconds)
 let patternLength = 3; // Normal pattern length
 let isPatternPlaying = false; // existing flag
 let allowGuessing = false;    // new flag controlling button activation
+let sequenceTimeouts = []; // new global array to hold all sequence timeouts
 
 function getRandomButton(){ 
     // generates a random number between 1 and 8 (8 Buttons)
@@ -40,6 +41,18 @@ function stopGame(){
   startBtn.classList.remove("hidden");
   stopBtn.classList.add("hidden");
   resetScore();
+  // Cancel all sequence timeouts
+  sequenceTimeouts.forEach(id => clearTimeout(id));
+  sequenceTimeouts = [];
+  stopGuessTimer();
+  if(countdownInterval) {
+    clearInterval(countdownInterval);
+    countdownInterval = null;
+  }
+  document.getElementById("countdown").style.display = "none";
+  document.getElementById("guessTimerDisplay").style.display = "none";
+  allowGuessing = false;
+  isPatternPlaying = false;
 }
 
 function lightButton(btn){
@@ -66,6 +79,10 @@ function playSingleClue(btn){
   }
 }
 function playClueSequence(){
+  // Clear any previous sequence timeouts
+  sequenceTimeouts.forEach(id => clearTimeout(id));
+  sequenceTimeouts = [];
+  
   guessCounter = 0;
   isPatternPlaying = true; // disable note button clicks
   allowGuessing = false;   // disable guessing until delay passes
@@ -75,12 +92,14 @@ function playClueSequence(){
   let delay = nextClueWaitTime; //set delay to initial wait time
   for(let i=0;i<=progress;i++){ // for each clue that is revealed so far
     console.log("play single clue: " + pattern[i] + " in " + delay + "ms")
-    setTimeout(playSingleClue,delay,pattern[i]) // set a timeout to play that clue
+    let timeoutId = setTimeout(playSingleClue, delay, pattern[i]);
+    sequenceTimeouts.push(timeoutId);
     delay += clueHoldTime 
     delay += cluePauseTime;
   }
   // After the sequence, start a 5-second countdown.
-  setTimeout(startCountdown, delay);
+  let countdownTimeoutId = setTimeout(startCountdown, delay);
+  sequenceTimeouts.push(countdownTimeoutId);
 }
 
 // Updated countdown function with dynamic delay computed as (0.01 * score)
@@ -209,6 +228,18 @@ function goToStartScreen() {
   // Hide the game area
   document.getElementById("gameArea").classList.add("hidden");
   tonePlaying = false;
+  // Cancel all sequence timeouts
+  sequenceTimeouts.forEach(id => clearTimeout(id));
+  sequenceTimeouts = [];
+  stopGuessTimer();
+  if(countdownInterval) {
+    clearInterval(countdownInterval);
+    countdownInterval = null;
+  }
+  document.getElementById("countdown").style.display = "none";
+  document.getElementById("guessTimerDisplay").style.display = "none";
+  allowGuessing = false;
+  isPatternPlaying = false;
 }
 // Page Initialization
 // Init Sound Synthesizer
