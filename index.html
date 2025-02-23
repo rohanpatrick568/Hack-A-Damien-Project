@@ -29,6 +29,7 @@
 <button id= "backToHome" onclick="goToStartScreen()">Back To Home</button>
  
 <div id="gameButtonArea">
+
 <button id="button1" onmousedown="startTone(1)" onmouseup="stopTone()" onclick="guess(1)">Do </button>
 <button id="button2" onmousedown="startTone(2)" onmouseup="stopTone()" onclick="guess(2)">Re </button>
 <button id="button3" onmousedown="startTone(3)" onmouseup="stopTone()" onclick="guess(3)">Mi </button>
@@ -37,9 +38,10 @@
 <button id="button6" onmousedown="startTone(6)" onmouseup="stopTone()" onclick="guess(6)">La </button>
 <button id="button7" onmousedown="startTone(7)" onmouseup="stopTone()" onclick="guess(7)">Ti </button>
 <button id="button8" onmousedown="startTone(8)" onmouseup="stopTone()" onclick="guess(8)">Do </button>
-
-<p id="scoreDisplay">Score: 0</p>
-<p id="highScoreDisplay">High Score: 0</p>
+  <div id="scoreContainer">
+    <p id="scoreDisplay">Score: 0</p>
+    <p id="highScoreDisplay">High Score: 0</p>
+  </div>
 </div>
 </div>
   </div>

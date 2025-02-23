@@ -19,7 +19,7 @@ p{
 
 #scoreDisplay {
   position: absolute;
-  bottom: 40px; /* Distance from the bottom */
+  bottom: 90px; /* Distance from the bottom */
   left: 50%;
   transform: translateX(-50%); /* Center horizontally */
   font-size: 20px;
@@ -31,7 +31,7 @@ p{
 
 #highScoreDisplay {
   position: absolute;
-  bottom: 10px; /* Distance from the bottom */
+  bottom: 60px; /* Distance from the bottom */
   left: 50%;
   transform: translateX(-50%); /* Center horizontally */
   font-size: 20px;
@@ -49,6 +49,7 @@ p{
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin-left: 595px;
 }
 
 #startBtn {
@@ -59,6 +60,7 @@ p{
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin-left: 600px;
 }
 
 #backToHome {
@@ -70,13 +72,13 @@ p{
   border-radius: 5px;
   cursor: pointer;
 }
-
 button{
   padding: 10px;
   border-radius: 10px;
   border: none;
 }
 #gameButtonArea {
+  margin-top: 75px;
   display: grid;
   grid-template-columns: repeat(4, 200px);
   grid-template-rows: repeat(2, 200px);
