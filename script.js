@@ -11,6 +11,7 @@ const clueHoldTime = 1000;
 const cluePauseTime = 333; //how long to pause in between clues
 const nextClueWaitTime = 1000; //how long to wait before starting playback of the clue sequence
 let guessCounter = 0;
+let score = 0;
 
 function getRandomButton(){ 
     // generates a random number between 1 and 8 (8 Buttons)
@@ -89,6 +90,7 @@ function guess(btn){
   
   if(pattern[guessCounter] == btn){
     //Guess was correct!
+    correctGuess();
     if(guessCounter == progress){
         // completed the currrent sequence correctly; add another level
         pattern.push(getRandomButton());
@@ -146,6 +148,26 @@ function stopTone(){
 
 }
 
+function beginGame() {
+  // Hide the start screen
+  document.getElementById("startScreen").style.display = "none";
+
+  // Show the game content
+  document.getElementById("gameArea").classList.remove("hidden");
+  document.getElementById("gameButtonArea").classList.remove("hidden");
+
+  // Call your game function here 
+  startGame();
+}
+
+function goToStartScreen() {
+  // Show the start screen
+  document.getElementById("startScreen").classList.remove("hidden");
+  document.getElementById("startScreen").style.display = "block";
+  // Hide the game area
+  document.getElementById("gameArea").classList.add("hidden");
+  tonePlaying = false;
+}
 // Page Initialization
 // Init Sound Synthesizer
 let AudioContext = window.AudioContext || window.webkitAudioContext 
@@ -157,8 +179,19 @@ g.gain.setValueAtTime(0,context.currentTime)
 o.connect(g)
 o.start(0)
 
+function updateScore(points) {
+  score += points; // Increase the score
+  document.getElementById("scoreDisplay").innerText = "Score: " + score;
+}
 
+// Example: Call this function when the player scores
+function correctGuess() {
+  updateScore(1); // Add 1 points for a correct guess
+}
 
-
-
+// Example: Reset score when game restarts
+function resetScore() {
+  score = 0;
+  document.getElementById("scoreDisplay").innerText = "Score: " + score;
+}
 

@@ -9,10 +9,54 @@ h1{
     font-family: verdana, arial, sans-serif;
     display: flex;
     justify-content: center;
+    color:#28a745;
 }
+
 p{
   display: flex;
   justify-content: center;
+}
+
+#scoreDisplay {
+  position: absolute;
+  bottom: 20px; /* Distance from the bottom */
+  left: 50%;
+  transform: translateX(-50%); /* Center horizontally */
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+  color: white;
+}
+
+#stopBtn {
+  background-color: rgb(204, 99, 99);  /* Change background color */
+  color: black;  /* Change text color */
+  font-size: 16px;  /* Adjust font size */
+  padding: 10px 15px;  /* Adjust padding */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#startBtn {
+  background-color: rgb(254, 217, 217);  /* Change background color */
+  color: black;  /* Change text color */
+  font-size: 16px;  /* Adjust font size */
+  padding: 10px 15px;  /* Adjust padding */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#backToHome {
+  background-color: rgb(255, 255, 194);  /* Change background color */
+  color: black;  /* Change text color */
+  font-size: 16px;  /* Adjust font size */
+  padding: 10px 15px;  /* Adjust padding */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 button{
@@ -32,7 +76,7 @@ button{
   height: 200px;
   width: 200px;
   margin: 2px;
-  font-family: helvetica, arial, sans-serif;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   color: white;
   font-weight: 800;
   font-size: xx-large;
@@ -40,8 +84,27 @@ button{
 .hidden {
   display: none;
 }
+
+#startTheGame {
+  font-size: 20px;
+  padding: 10px 20px;
+  border: none;
+  background-color: #28a745;
+  color: white;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+#startScreen {
+  position: relative;
+  align-items: center; /* Centers vertically */
+  height: 100vh; /* Makes the div take full height of the viewport */
+  text-align: center; /* Centers text inside the div */
+}
+
 #button1{
 background: lightgreen;
+
 }
 #button2{
 background: lightblue;
@@ -50,7 +113,7 @@ background: lightblue;
 background: pink;
 }
 #button4{
-background: lightyellow;
+background: rgb(255, 206, 150);
 }
 #button1:active, #button1.lit {
   background:green;
@@ -62,7 +125,7 @@ background: lightyellow;
   background:red;
 }
 #button4:active, #button4.lit{
-  background:yellow;
+  background:orange;
 }
 #button5{
   background: lightpink;

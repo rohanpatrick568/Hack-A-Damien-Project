@@ -4,27 +4,44 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>Finalist Task</title>
+  <title>Memory Game</title>
   <!-- Links our CSS code to our HTML code -->
   <link href="style.css" rel="stylesheet" type="text/css" />
+
+
 </head>
 
 <body>
+
+   <!-- Start Game Button (Initially Visible) -->
+<div id="startScreen">
+  <h2>Welcome to the </h2>
   <h1>Solfége Light & Sound Memory Game!</h1>
-<p>Welcome to the game! Repeat back the pattern you hear by pressing the buttons.</p>
-<button id="startBtn" onclick="startGame()" >Start</button>
+  <p>Welcome to the game! Repeat back the pattern you hear by pressing the buttons.</p>
+    <button id="startTheGame" onclick="beginGame()">Start The Game</button>
+</div>
+
+<div id="gameArea" class="hidden">
+        <!-- The game will load here -->
+<button id="startBtn" onclick="startGame()" >Retry</button>
 <button id="stopBtn" class="hidden" onclick="stopGame()">End</button>
+
+<button id= "backToHome" onclick="goToStartScreen()">Back To Home</button>
  
 <div id="gameButtonArea">
 <button id="button1" onmousedown="startTone(1)" onmouseup="stopTone()" onclick="guess(1)">Do </button>
-<button id ="button2" onmousedown="startTone(2)" onmouseup="stopTone()" onclick="guess(2)">Re </button>
+<button id="button2" onmousedown="startTone(2)" onmouseup="stopTone()" onclick="guess(2)">Re </button>
 <button id="button3" onmousedown="startTone(3)" onmouseup="stopTone()" onclick="guess(3)">Mi </button>
 <button id="button4" onmousedown="startTone(4)" onmouseup="stopTone()" onclick="guess(4)">Fa </button>
 <button id="button5" onmousedown="startTone(5)" onmouseup="stopTone()" onclick="guess(5)">So </button>
 <button id="button6" onmousedown="startTone(6)" onmouseup="stopTone()" onclick="guess(6)">La </button>
 <button id="button7" onmousedown="startTone(7)" onmouseup="stopTone()" onclick="guess(7)">Ti </button>
 <button id="button8" onmousedown="startTone(8)" onmouseup="stopTone()" onclick="guess(8)">Do </button>
+
+<p id="scoreDisplay">Score: 0</p>
 </div>
+</div>
+  </div>
 
 
 
